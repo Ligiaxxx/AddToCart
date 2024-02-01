@@ -1,0 +1,78 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "tasks": [
+    {
+      "id": 3,
+      "text": "Task 3"
+    },
+    {
+      "text": "123",
+      "id": 4
+    },
+    {
+      "text": "merg la cumparaturi",
+      "id": 5
+    },
+    {
+      "text": "laundry",
+      "id": 6
+    },
+    {
+      "text": "fjfjfjf",
+      "id": 7
+    },
+    {
+      "text": "bicicleta",
+      "id": 8
+    },
+    {
+      "text": "qqq",
+      "id": 9
+    },
+    {
+      "text": "pizza",
+      "id": 10
+    },
+    {
+      "text": "minge",
+      "id": 11
+    },
+    {
+      "text": "eeee",
+      "id": 12
+    },
+    {
+      "text": "lea",
+      "id": 13
+    },
+    {
+      "text": "Ligia",
+      "id": 14
+    }
+  ],
+  "products": [
+    {
+      "name": "Cozonac artizanal",
+      "id": 1,
+      "price": 10.99,
+      "image": "/media/cozonac.jpg",
+      "quantity": 21
+    }
+  ]
+}
