@@ -107,6 +107,7 @@ function Cart() {
         <p>No Products in the list</p>
       ) : (
         <ul>
+          
           {products.map((products) => (
             <ProductItem
               key={products.id}

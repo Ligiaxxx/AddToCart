@@ -1,0 +1,37 @@
+.container{
+    background-color: orchid;
+}
+ul{ 
+    display: flex;
+    flex-direction:row;
+}
+li{
+    list-style-type: none;
+}
+.product-image{
+    width:150px;
+    border-radius: 15px;
+    border: 2px solid black;
+  }
+  .product-image:hover{
+   
+  }
+  .product{
+    margin: 15px;
+    border-radius: 12px;
+    background-color: red;    
+    padding:5px;
+    width: 150px;
+  }
+  .product p{
+    margin:0;
+  }
+
+  .product button{    
+    border-radius: 5px;
+    margin-left: 20%;
+  }
+
+  .product button:hover{    
+   background-color: brown;
+  }
