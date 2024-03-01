@@ -1,8 +1,6 @@
 import React from 'react';
-import image from './media/cozonac.jpg';
 
 function ProductItem({ product, deleteProduct }) {
-  // console.log(product.image)
   const deleteProductHandler = async () => {
     try {
       if (product.quantity > 1) {
