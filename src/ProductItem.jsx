@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ProductItem({ product, deleteProduct }) {
+function ProductItem({ product, deleteProduct, image }) {
   const deleteProductHandler = async () => {
     try {
       if (product.quantity > 1) {
@@ -42,7 +42,7 @@ function ProductItem({ product, deleteProduct }) {
     <div>
       {product ? (
         <>
-          <img src={product.image} alt={product.name} />
+          {/* <img src={image} alt={product.name} /> */}
      
           <h3>{product.name}</h3>
           <p>Quantity: {product.quantity}</p>

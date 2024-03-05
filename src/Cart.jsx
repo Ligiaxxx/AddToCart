@@ -30,6 +30,9 @@ function Cart() {
     try {
       const response = await fetch("http://localhost:3000/products");
       const data = await response.json();
+     
+      console.log(data)
+      ;
       setProducts(data);
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -77,7 +80,7 @@ function Cart() {
       });
       if (response.ok) {
         setNewProduct("");
-        fetchTasks(); // Refresh the product list after adding a new product
+         fetchTasks(); // Refresh the product list after adding a new product
       } else {
         console.error(
           "Failed to add product:",
@@ -113,7 +116,6 @@ function Cart() {
               key={products.id}
               product={products}
               fetchProducts={fetchProducts}
-              
             />
           ))}
         </ul>
