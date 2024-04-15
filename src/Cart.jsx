@@ -15,11 +15,12 @@ function Cart() {
   const [products, setProducts] = useState([]);
   const [newProduct, setNewProduct] = useState("");
 
+  const [total, setTotal] = useState(0);
   useEffect(() => {
     // Fetch tasks from the server when the component mounts
     fetchTasks();
     fetchProducts();
-  }, []);
+  }, [products]);
 
   const fetchTasks = async () => {
     try {
@@ -36,11 +37,24 @@ function Cart() {
       const response = await fetch("http://localhost:3000/products");
       const data = await response.json();
 
-      console.log(data);
+      // console.log(data);
       setProducts(data);
     } catch (error) {
       console.error("Error fetching products:", error);
     }
+  };
+
+  const calculateTotal = () => {
+    let totalPrice = 0;
+    products.forEach((product) => {
+      // Calculăm prețul total pentru fiecare produs, înmulțind prețul cu cantitatea
+      const productTotalPrice = product.price * product.quantity;
+      // Adăugăm prețul total al produsului la prețul total general
+      totalPrice += productTotalPrice;
+    });
+    // Setăm totalul calculat în starea componentei
+    setTotal(totalPrice);
+    console.log(totalPrice);
   };
 
   const addTask = async () => {
@@ -142,7 +156,14 @@ function Cart() {
           ))}
         </ul>
       )}
-   <button><Link to="/checkout" target="_blank">Go to Checkout</Link></button>
+      <button onClick={calculateTotal}>
+        <Link
+          to={{ pathname: "/checkout", search: `?total=${total}`}}
+           target="_blank"
+        >
+          Go to Checkout
+        </Link>
+      </button>
     </div>
   );
 }

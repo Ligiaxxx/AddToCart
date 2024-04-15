@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ProductItem({ product, deleteProduct, image }) {
+function ProductItem({ product, deleteProduct,price, name, image }) {
   const deleteProductHandler = async () => {
     try {
       if (product.quantity > 1) {

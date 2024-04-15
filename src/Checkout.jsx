@@ -1,12 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useLocation } from "react-router-dom";
 import "./style/Checkout.css";
-import { Link } from "react-router-dom";
-
 
 function Checkout() {
-    return(
-        <div><h1>CHECKOUT</h1></div>
-    )
-};
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const total = searchParams.get("total") || 0;
+
+  return (
+    <div>
+      <h1>CHECKOUT</h1>
+      <p>Total: {total}</p>
+    </div>
+  );
+}
 
 export default Checkout;
