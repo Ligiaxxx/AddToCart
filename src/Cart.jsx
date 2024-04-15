@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 import TodoItem from "./TodoItem";
 import ProductItem from "./ProductItem";
 import imgProdus1 from "./media/cozonac.jpg";
+import "./style/Cart.css";
+import Checkout from "./Checkout";
 
 function Cart() {
   const [tasks, setTasks] = useState([]);
@@ -30,9 +35,8 @@ function Cart() {
     try {
       const response = await fetch("http://localhost:3000/products");
       const data = await response.json();
-     
-      console.log(data)
-      ;
+
+      console.log(data);
       setProducts(data);
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -80,7 +84,7 @@ function Cart() {
       });
       if (response.ok) {
         setNewProduct("");
-         fetchTasks(); // Refresh the product list after adding a new product
+        fetchTasks(); // Refresh the product list after adding a new product
       } else {
         console.error(
           "Failed to add product:",
@@ -92,6 +96,25 @@ function Cart() {
       console.error("Error adding product:", error);
     }
   };
+
+  async function shop(e) {
+    try {
+      e.preventDefault();
+      const response = await fetch("http://localhost:3000/products");
+      const data = await response.json();
+
+      console.log("Cumpăr următoarele produse:");
+      data.forEach((product, index) => {
+        console.log(
+          `Produsul ${index + 1}: ${product.name} - Cantitate: ${
+            product.quantity
+          } - Preț: ${product.price}`
+        );
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  }
 
   return (
     <div>
@@ -110,7 +133,6 @@ function Cart() {
         <p>No Products in the list</p>
       ) : (
         <ul>
-          
           {products.map((products) => (
             <ProductItem
               key={products.id}
@@ -120,6 +142,7 @@ function Cart() {
           ))}
         </ul>
       )}
+   <button><Link to="/checkout" target="_blank">Go to Checkout</Link></button>
     </div>
   );
 }

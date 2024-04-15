@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Cart from "./Cart";
+
+import { Link } from "react-router-dom";
 import imgProdus1 from "./media/cozonac.jpg";
 import suc from "./media/suc.jpg";
 import "./style/Todos.css";
@@ -192,7 +193,9 @@ function Todos() {
           </li>
         </ul>
       </div>
-      <Cart cart={cart} />
+    
+        <button><Link to="/Cart" target="_blank">Go to Cart</Link></button>
+   
     </div>
   );
 }

@@ -72,14 +72,21 @@
       "id": 1,
       "price": 10.99,
       "img": "./media/cozonac.jpg",
-      "quantity": 1
+      "quantity": 13
     },
     {
       "name": "Suc mere verzi",
       "id": 2,
       "price": 10.99,
       "img": "./media/suc.jpg",
-      "quantity": 1
+      "quantity": 3
+    },
+    {
+      "name": "Suc mere verzi233",
+      "id": 3,
+      "price": 10.99,
+      "img": "./media/suc.jpg",
+      "quantity": 3
     }
   ]
 }
