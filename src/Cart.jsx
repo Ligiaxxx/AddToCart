@@ -37,7 +37,6 @@ function Cart() {
       const response = await fetch("http://localhost:3000/products");
       const data = await response.json();
 
-      // console.log(data);
       setProducts(data);
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -132,8 +131,9 @@ function Cart() {
 
   return (
     <div>
-      <h1>Cart</h1>
-      {/* {tasks.length === 0 ? (
+      <div className="container">
+        <h1>Cart</h1>
+        {/* {tasks.length === 0 ? (
         <p>No tasks in the list</p>
       ) : (
         <ul>
@@ -143,27 +143,31 @@ function Cart() {
         </ul>
       )} */}
 
-      {products.length === 0 ? (
-        <p>No Products in the list</p>
-      ) : (
-        <ul>
-          {products.map((products) => (
-            <ProductItem
-              key={products.id}
-              product={products}
-              fetchProducts={fetchProducts}
-            />
-          ))}
-        </ul>
-      )}
-      <button onClick={calculateTotal}>
-        <Link
-          to={{ pathname: "/checkout", search: `?total=${total}`}}
-           target="_blank"
-        >
-          Go to Checkout
-        </Link>
-      </button>
+        {products.length === 0 ? (
+          <p>No Products in the list</p>
+        ) : (
+          <ul>
+            {products.map((products) => (
+              <div className="PRODUCT-ITEM">
+                <ProductItem
+                  key={products.id}
+                  product={products}
+                  fetchProducts={fetchProducts}
+                />
+              </div>
+            ))}
+          </ul>
+        )}
+          <button onClick={calculateTotal}>
+            <Link
+              to={{ pathname: "/checkout", search: `?total=${total}` }}
+              target="_blank"
+              className="link-no-decoration"
+            >
+              Go to Checkout
+            </Link>
+          </button>
+      </div>
     </div>
   );
 }

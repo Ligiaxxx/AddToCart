@@ -1,3 +1,27 @@
-.shop-me{
+.PRODUCT-ITEM{
+    margin: 15px;
+    border-radius: 12px;
     background-color: red;
+    padding: 5px;
+    width: 150px;
 }
+.PRODUCT-ITEM img{
+    width: 140px;
+    border-radius: 15px;
+    border: 2px solid black;
+}
+.PRODUCT-ITEM button{
+    border-radius: 5px;
+    margin-left: 35%;
+}
+.container {
+    background-color: orchid;
+    border-radius: 12px;
+    padding: 5px;
+  }
+  .container button{
+    border-radius: 5px;
+  }
+  .link-no-decoration {
+    text-decoration: none;
+  }

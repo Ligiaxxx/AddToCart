@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import imgProdus1 from "./media/cozonac.jpg";
 import suc from "./media/suc.jpg";
+import prime from "./media/prime.png"
+import shopping_cart from "./media/shopping-cart.png";
 import "./style/Todos.css";
 
 function Todos() {
@@ -44,21 +46,21 @@ function Todos() {
       id: 1,
       name: "Cozonac artizanal",
       price: 10.99,
-      img: "./media/cozonac.jpg",
+      img: imgProdus1,
       quantity: 1,
     },
     {
       id: 2,
       name: "Suc mere verzi",
       price: 10.99,
-      img: "./media/suc.jpg",
+      img: suc,
       quantity: 1,
     },
     {
       id: 3,
-      name: "Suc mere verzi233",
+      name: "Prime",
       price: 10.99,
-      img: "./media/suc.jpg",
+      img: prime,
       quantity: 1,
     },
   ];
@@ -67,17 +69,19 @@ function Todos() {
     e.preventDefault();
     const selectedId = parseInt(e.target.dataset.id);
     // const existingCartItem = cart.find((item) => item.id === selectedId);
-  
+
     try {
       // Verificăm dacă produsul există în baza de date
       const response = await fetch(
         `http://localhost:3000/products/${selectedId}`
       );
-  
+
       if (!response.ok) {
         // Produsul nu există, adăugăm unul nou în baza de date
-        const selectedDish = ListaProduse.find((dish) => dish.id === selectedId);
-        
+        const selectedDish = ListaProduse.find(
+          (dish) => dish.id === selectedId
+        );
+
         // const selectedDish = await fetch(
         //   `http://localhost:3000/products/${selectedId}`
         // ).then((response) => response.json());
@@ -89,7 +93,7 @@ function Todos() {
           img: selectedDish.img,
           quantity: 1,
         };
-  
+
         const addProductResponse = await fetch(
           "http://localhost:3000/products",
           {
@@ -100,7 +104,7 @@ function Todos() {
             body: JSON.stringify(newItem),
           }
         );
-  
+
         if (addProductResponse.ok) {
           console.log("Product added successfully to database!");
           setCart([...cart, newItem]);
@@ -119,7 +123,7 @@ function Todos() {
           ...existingProduct,
           quantity: existingProduct.quantity + 1,
         };
-  
+
         const updateResponse = await fetch(
           `http://localhost:3000/products/${selectedId}`,
           {
@@ -130,12 +134,14 @@ function Todos() {
             body: JSON.stringify(updatedProduct),
           }
         );
-  
+
         if (updateResponse.ok) {
           console.log("Product quantity updated in database!");
           // Actualizăm cantitatea în coș
           const updatedCart = cart.map((item) =>
-            item.id === selectedId ? { ...item, quantity: item.quantity + 1 } : item
+            item.id === selectedId
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
           );
           setCart(updatedCart);
           setAddedToCart(true);
@@ -151,51 +157,35 @@ function Todos() {
       console.error("Error adding/updating product:", error);
     }
   }
-  
+
   return (
-    <div>
-      <div className="container">
+    <div className="main">
+       <div className="container">
         <h1>Products</h1>
         <ul>
-          <li>
-            <div className="product">
-              <img
-                src={imgProdus1}
-                alt="primul-produs"
-                className="product-image"
-              />
-
-              <p>Cozonac artizanal</p>
-              <button data-id={1} onClick={addProduct}>
-                Add Product
-              </button>
-            </div>
-          </li>
-          <li>
-            <div className="product">
-              <img src={suc} alt="suc" className="product-image" />
-
-              <p>Suc mere verzi</p>
-              <button data-id={2} onClick={addProduct}>
-                Add Product
-              </button>
-            </div>
-          </li>
-          <li>
-            <div className="product">
-              <img src={suc} alt="suc2" className="product-image" />
-
-              <p>Suc mere verzi233</p>
-              <button data-id={3} onClick={addProduct}>
-                Add Product
-              </button>
-            </div>
-          </li>
+          {ListaProduse.map((produs) => (
+            <li key={produs.id}>
+              <div className="product">
+                <img src={produs.img} alt={produs.name} className="product-image" />
+                <p>{produs.name}</p>
+                <p>Pret: ${produs.price}</p>
+                <button data-id={produs.id} onClick={addProduct}>
+                  Add Product
+                </button>
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
-    
-        <button><Link to="/Cart" target="_blank">Go to Cart</Link></button>
-   
+
+      <div className="shopping_cart">
+        <button>
+          <Link to="/Cart" target="_blank" id="link">
+            <img src={shopping_cart} alt="Shopping Cart" />
+            Go to Cart
+          </Link>
+        </button>
+      </div>
     </div>
   );
 }

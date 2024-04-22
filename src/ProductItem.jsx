@@ -1,6 +1,7 @@
 import React from 'react';
+import suc from "./media/suc.jpg"
 
-function ProductItem({ product, deleteProduct,price, name, image }) {
+function ProductItem({ product, deleteProduct}) {
   const deleteProductHandler = async () => {
     try {
       if (product.quantity > 1) {
@@ -37,18 +38,19 @@ function ProductItem({ product, deleteProduct,price, name, image }) {
       console.error('Error updating/deleting product:', error);
     }
   };
-
   return (
     <div>
       {product ? (
         <>
-          {/* <img src={image} alt={product.name} /> */}
-     
           <h3>{product.name}</h3>
+          <img src={product.img} alt={product.name} /> {/* Utilizați prop-ul image pentru imagine */}
+         
           <p>Quantity: {product.quantity}</p>
           <p>Price: ${product.price}</p>
           <button onClick={deleteProductHandler}>Delete</button>
+          
         </>
+        
       ) : (
         <p>No products in shopping list</p>
       )}
