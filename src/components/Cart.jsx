@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 import TodoItem from "./TodoItem";
 import ProductItem from "./ProductItem";
-import imgProdus1 from "./media/cozonac.jpg";
-import "./style/Cart.css";
+import imgProdus1 from "../media/cozonac.jpg";
+import "../style/Cart.css";
 import Checkout from "./Checkout";
 
 function Cart() {

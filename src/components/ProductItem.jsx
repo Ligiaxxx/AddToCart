@@ -1,5 +1,5 @@
 import React from 'react';
-import suc from "./media/suc.jpg"
+import suc from "../media/suc.jpg"
 
 function ProductItem({ product, deleteProduct}) {
   const deleteProductHandler = async () => {

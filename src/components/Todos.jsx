@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
-import imgProdus1 from "./media/cozonac.jpg";
-import suc from "./media/suc.jpg";
-import prime from "./media/prime.png"
-import shopping_cart from "./media/shopping-cart.png";
-import "./style/Todos.css";
+import imgProdus1 from "../media/cozonac.jpg";
+import suc from "../media/suc.jpg";
+import prime from "../media/prime.png"
+import shopping_cart from "../media/shopping-cart.png";
+import "../style/Todos.css";
 
 function Todos() {
   const [cart, setCart] = useState([]);

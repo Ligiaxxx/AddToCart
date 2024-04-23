@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import "./style/Checkout.css";
+import "../style/Checkout.css";
 
 function Checkout() {
     const location = useLocation();
