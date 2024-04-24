@@ -5,20 +5,30 @@
 .navigation {
   background-color: brown;
   overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
 }
 .navigation ul {
   background-color: yellow;
   list-style-type: none;
-  margin: 0;
-  padding: 0;
 }
 .navigation ul li {
   background-color: red;
   padding: 14px 16px;
   font-size: 20px;
-  float: left;
 }
 
-.navigation li.active {
-  color: aqua;
+.navigation li:hover {
+  background-color: yellow;
+}
+.shopping_cart {
+  width: 60px;
+  margin-left: 956px;
+}
+
+.shopping_cart #link {
+  text-decoration: none;
 }

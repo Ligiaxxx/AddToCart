@@ -11,7 +11,8 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-      <Navbar/>
+        <Navbar />
+
         <Routes>
           <Route path="/" element={<Todos />} />
           <Route path="/acasa" element={<Acasa />} />

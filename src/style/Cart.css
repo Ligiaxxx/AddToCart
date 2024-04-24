@@ -14,14 +14,18 @@
     border-radius: 5px;
     margin-left: 35%;
 }
-.container {
+.container-cart {
     background-color: orchid;
     border-radius: 12px;
-    padding: 5px;
+    /* margin-top: -180px;  */
+    position: fixed;
+  top: 60px;
+  left:400px;
   }
-  .container button{
+  .container-cart button{
     border-radius: 5px;
+    margin: 5px;
   }
-  .link-no-decoration {
+  .checkout-btn {
     text-decoration: none;
   }

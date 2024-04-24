@@ -1,0 +1,7 @@
+.main-acasa{
+        background-color: orchid;
+        display: flex;
+        position: fixed;
+        top:60px;
+        right:600px;
+}

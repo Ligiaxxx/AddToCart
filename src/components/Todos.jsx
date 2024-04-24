@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import imgProdus1 from "../media/cozonac.jpg";
 import suc from "../media/suc.jpg";
-import prime from "../media/prime.png"
-import shopping_cart from "../media/shopping-cart.png";
+import prime from "../media/prime.png";
+import Navbar from "./Navbar";
 import "../style/Todos.css";
 
 function Todos() {
@@ -159,14 +159,18 @@ function Todos() {
   }
 
   return (
-    <div className="main">
-       <div className="container">
+    <div className="main-todos">
+      <div className="container-todos">
         <h1>Products</h1>
         <ul>
           {ListaProduse.map((produs) => (
             <li key={produs.id}>
               <div className="product">
-                <img src={produs.img} alt={produs.name} className="product-image" />
+                <img
+                  src={produs.img}
+                  alt={produs.name}
+                  className="product-image"
+                />
                 <p>{produs.name}</p>
                 <p>Pret: ${produs.price}</p>
                 <button data-id={produs.id} onClick={addProduct}>
@@ -176,15 +180,6 @@ function Todos() {
             </li>
           ))}
         </ul>
-      </div>
-
-      <div className="shopping_cart">
-        <button>
-          <Link to="/Cart" target="_blank" id="link">
-            <img src={shopping_cart} alt="Shopping Cart" />
-            Go to Cart
-          </Link>
-        </button>
       </div>
     </div>
   );

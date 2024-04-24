@@ -1,9 +1,13 @@
-.main {
+.main-todos {
   display: flex;
-  flex-direction: row;
-  margin: 5px;
+  flex-direction: row;  
+  border-radius: 12px;
+  position: fixed;
+  top: 60px;
+  left:400px;
+  /* width: 100%; */
 }
-.container {
+.container-todos {
   background-color: orchid;
   border-radius: 12px;
   padding: 5px;
@@ -41,11 +45,4 @@ li {
   background-color: brown;
 }
 
-.shopping_cart {
-  width: 40px;
-  margin-left: 30px;
-}
 
-.shopping_cart #link {
-  text-decoration: none;
-}

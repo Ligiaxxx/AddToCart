@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import TodoItem from "./TodoItem";
@@ -131,7 +130,7 @@ function Cart() {
 
   return (
     <div>
-      <div className="container">
+      <div className="container-cart">
         <h1>Cart</h1>
         {/* {tasks.length === 0 ? (
         <p>No tasks in the list</p>
@@ -158,15 +157,14 @@ function Cart() {
             ))}
           </ul>
         )}
-          <button onClick={calculateTotal}>
-            <Link
-              to={{ pathname: "/checkout", search: `?total=${total}` }}
-              target="_blank"
-              className="link-no-decoration"
-            >
-              Go to Checkout
-            </Link>
-          </button>
+        <button onClick={calculateTotal}>
+          <Link
+            to={{ pathname: "/checkout", search: `?total=${total}` }}
+            className="checkout-btn"
+          >
+            Go to Checkout
+          </Link>
+        </button>
       </div>
     </div>
   );
