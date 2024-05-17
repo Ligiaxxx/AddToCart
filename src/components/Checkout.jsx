@@ -3,10 +3,10 @@ import { useLocation } from "react-router-dom";
 import "../style/Checkout.css";
 
 function Checkout() {
-    const location = useLocation();
-    const searchParams = new URLSearchParams(location.search);
-    const total = searchParams.get("total") || 0;
-
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const total = searchParams.get("total") || 0;
+  console.log(searchParams.get("total"));
   return (
     <div>
       <h1>CHECKOUT</h1>

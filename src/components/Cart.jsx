@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory, useNavigate  } from "react-router-dom";
 
 import TodoItem from "./TodoItem";
 import ProductItem from "./ProductItem";
@@ -15,11 +15,19 @@ function Cart() {
   const [newProduct, setNewProduct] = useState("");
 
   const [total, setTotal] = useState(0);
+  const navigate = useNavigate();
+
   useEffect(() => {
     // Fetch tasks from the server when the component mounts
-    fetchTasks();
+    // fetchTasks();
     fetchProducts();
-  }, [products]);
+  }, []);
+
+  useEffect(() => {
+    if (total > 0) {
+      navigate(`/checkout?total=${total}`);
+    }
+  }, [total, navigate]);
 
   const fetchTasks = async () => {
     try {
@@ -51,8 +59,16 @@ function Cart() {
       totalPrice += productTotalPrice;
     });
     // Setăm totalul calculat în starea componentei
-    setTotal(totalPrice);
     console.log(totalPrice);
+     return totalPrice;
+
+  };
+
+   // Funcția pentru gestionarea apăsării butonului "Go to Checkout"
+   const handleCheckout = () => {
+    const totalPrice = calculateTotal(); // Calculează totalul
+    navigate(`/checkout?total=${totalPrice}`); // Navighează către pagina de checkout
+ 
   };
 
   const addTask = async () => {
@@ -147,9 +163,9 @@ function Cart() {
         ) : (
           <ul>
             {products.map((products) => (
-              <div className="PRODUCT-ITEM">
+              <div className="PRODUCT-ITEM" 
+              key={products.id}>
                 <ProductItem
-                  key={products.id}
                   product={products}
                   fetchProducts={fetchProducts}
                 />
@@ -157,9 +173,9 @@ function Cart() {
             ))}
           </ul>
         )}
-        <button onClick={calculateTotal}>
+        <button onClick={() => { handleCheckout()}}>
           <Link
-            to={{ pathname: "/checkout", search: `?total=${total}` }}
+            to={{ pathname: "/checkout", search: `?total=${total}`}}
             className="checkout-btn"
           >
             Go to Checkout
@@ -168,6 +184,5 @@ function Cart() {
       </div>
     </div>
   );
-}
-
+            }
 export default Cart;
